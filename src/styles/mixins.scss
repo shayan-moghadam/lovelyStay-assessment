@@ -1,0 +1,26 @@
+@use "src/styles/colors.scss";
+
+@mixin container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  top: 0;
+  left: 0;
+  background: transparent;
+  overscroll-behavior: contain;
+  -ms-scroll-chaining: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 2;
+}
+
+@mixin glassBackground {
+  background: #0d111733;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid colors.$color-border-default;
+}

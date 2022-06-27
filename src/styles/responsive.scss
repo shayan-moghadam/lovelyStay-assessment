@@ -1,0 +1,28 @@
+// Note : Usually in bigger projects i use responsive modification seperatly on each scss file to make it easier to read and debug and seperate Mobile and Tablate Devices break point but in this project for making it a little more clean i put all responsive codes here
+
+/* Small devices */
+@media (min-width: 320px) {
+  .search-wrapper {
+    width: 90%;
+    padding: 15px 5px;
+  }
+  .finder {
+    min-width: 100%;
+  }
+  .repo-box {
+    flex-grow: 1;
+  }
+}
+/* Medium And Large devices */
+@media (min-width: 768px) {
+  .search-wrapper {
+    width: 100%;
+    padding: 15px 100px;
+  }
+  .finder {
+    min-width: 600px;
+  }
+  .repo-box {
+    flex-grow: 0;
+  }
+}

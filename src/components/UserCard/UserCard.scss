@@ -1,0 +1,145 @@
+@use "src/styles/colors.scss";
+@use "src/styles/mixins.scss";
+
+$imageSize: 170px;
+$textColor: #f3f3f3;
+$animationTime: 2s;
+$cardPadding: 15px;
+
+.user-card {
+  width: 80%;
+  height: 100%;
+  min-height: 85vh;
+  margin-top: 70px;
+  padding: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+
+  .card-header {
+    width: clamp(250px, 330px, 350px);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    padding: $cardPadding;
+    color: $textColor;
+    @include mixins.glassBackground;
+
+    .card-avatar {
+      width: $imageSize;
+      height: $imageSize;
+      border-radius: 50%;
+      border: 1px solid colors.$color-border-default;
+      margin-bottom: 10px;
+      animation: animateCard $animationTime ease-in-out 1 forwards;
+    }
+    .card-name {
+      max-width: 90%;
+      font-size: 1.5em;
+      color: $textColor;
+      font-weight: bold;
+      animation: animateCard calc($animationTime + 0.3s) ease-in-out 1 forwards;
+    }
+    .subtitle {
+      max-width: 70%;
+      max-height: 100px;
+      overflow-y: auto;
+      font-size: 1em;
+      word-break: break-all;
+      color: $textColor;
+      animation: animateCard calc($animationTime + 0.5s) ease-in-out 1 forwards;
+    }
+    .repo-count {
+      font-size: 1.1em;
+      font-weight: 600;
+      animation: animateCard calc($animationTime + 0.5s) ease-in-out 1 forwards;
+    }
+  }
+  .card-body {
+    width: clamp(45%, 50%, 100%);
+    padding: $cardPadding;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 4;
+    gap: 15px;
+    max-height: 80vh;
+    overflow-y: auto;
+    color: $textColor;
+    @include mixins.glassBackground;
+    .card-body-title {
+      display: inline-flex;
+      width: 100%;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+    .repo-box-wrapper {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 15px;
+      .repo-box {
+        flex-basis: 48%;
+        width: 48%;
+        height: 135px;
+        padding: 15px;
+        border: 1px solid colors.$color-border-default;
+        border-radius: 5px;
+        .name-wrapper {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          a {
+            max-width: 72%;
+            display: block;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            text-align: left;
+          }
+          .name {
+            color: #297bd8;
+            font-weight: 600;
+            font-size: 1em;
+            transition: 0.2s;
+            text-decoration: none;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+          .public {
+            font-size: 0.75em;
+            padding: 5px 6px;
+            border: 1px solid colors.$color-border-default;
+            border-radius: 10px;
+            line-height: 1em;
+          }
+        }
+        .desc {
+          font-size: 0.9em;
+          text-align: left;
+          max-height: 60px;
+          overflow-y: auto;
+        }
+      }
+    }
+  }
+}
+
+@keyframes animateCard {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
